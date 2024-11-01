@@ -1,0 +1,47 @@
+{
+  "Tainguyen": {
+    "Cong": 1000,
+    "Congdung": 250,
+    "Dien": 1000,
+    "Diendung": 250,
+    "Nuoc": 1000,
+    "Nuocdung": 250
+  },
+  "quan1": {
+    "Buimin": 15,
+    "Doam": 21,
+    "Luongmua": 20,
+    "Mucgio": 16,
+    "Nhietdo": 22
+  },
+  "quan2": {
+    "Buimin": 12,
+    "Doam": 12,
+    "Luongmua": 24,
+    "Mucgio": 13,
+    "Nhietdo": 24
+  },
+  "quan3": {
+    "Buimin": 14,
+    "Doam": 14,
+    "Luongmua": 16,
+    "Mucgio": 13,
+    "Nhietdo": 24
+  },
+  "quan4": {
+    "Buimin": 23,
+    "Doam": 16,
+    "Luongmua": 14,
+    "Mucgio": 15,
+    "Nhietdo": 18
+  },
+  "thietbi1": {
+    "dienthoai": 0
+  },
+  "thietbi2": {
+    "den1": 0
+  },
+  "thietbi3": {
+    "loa": 0
+  }
+}

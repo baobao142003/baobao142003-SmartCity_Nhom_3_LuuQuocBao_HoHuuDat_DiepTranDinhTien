@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id= "header">
+        <ul>
+             <li><b>THÀNH PHỐ THÔNG MINH</b></li>
+             <img src="image\logo1.png" id="logo">
+        </ul>
+    </div>
+    <div id= "banner">
+        <div class="tag">
+            <button onclick="function_q1()"><b>Quận 1</b></button>
+            <button onclick="function_q2()"><b>Quận 2</b></button>
+            <button onclick="function_q3()"><b>Quận 3</b></button>
+            <button onclick="function_q4()"><b>Quận 4</b></button>
+        </div>
+    </div>
+    <div id= "main"> 
+        <div id="top">
+          <div id="time"> </div>
+           <script>
+          function dongho() {
+          var time = new Date();
+          var gio = time.getHours();
+          var phut = time.getMinutes();
+          var giay = time.getSeconds();
+          if (gio < 10) 
+          gio = "0" + gio;
+          if (phut < 10) 
+          phut = "0" + phut;
+          if (giay < 10) 
+          giay = "0" + giay;
+          document.getElementById("time").innerHTML = gio + ":" + phut + ":" + giay;
+          setTimeout("dongho()", 1000);
+          };
+          dongho();
+          </script>
+          <div id="nd"> 
+            <h1><img src="image\nhietdo1.png" id="nd1"></h1>
+            <h4>Nhiệt độ °C</h4>
+          </div>
+          <div id="da"> 
+            <h1><img src="image\doam1.png" id="da1"></h1>
+            <h2>Độ ẩm %</h2>
+          </div>
+          <div id="lm"> 
+            <h1><img src="image\luongmua1.png" id="lm1"></h1>
+            <h5>Lượng mưa mm</h5>
+          </div>
+          <div id="mg"> 
+            <h1><img src="image\mucgio1.png" id="mg1"></h1>
+            <h2>Mức gió m/s</h2>
+          </div>
+          <div id="bm"> 
+            <h1><img src="image\buimin1.png" id="bm1"></h1>
+            <h2>Bụi mịn µg/m³</h2>
+          </div>
+
+          <div class="thongso">
+            <h6 id="nhietdo"></h6>
+            <h6 id="doam"></h6>
+            <h6 id="luongmua"></h6>
+            <h6 id="mucgio"></h6>
+            <h6 id="buimin"></h6>  
+          </div>
+
+        </div>
+
+        <div id="bot">
+          <h1><center><img src="image\call1.png"id="call"></center>
+            <button type="button" id="btn1" >On</button>
+            <button type="button" id="btn2" >Off</button><br><br>
+        </h1>
+        <h1><center><img src="image\den1.png"id="led"></center>
+            <button type="button" id="btn3" >On</button>
+            <button type="button" id="btn4" >Off</button><br><br>
+        </h1>
+        <h1><center><img src="image\loa1.png"id="loa"></center>
+            <button type="button" id="btn5" >On</button>
+            <button type="button" id="btn6" >Off</button><br><br>
+        </h1>
+        <h2>SOS</h2>
+        <h3>ĐÈN ĐƯỜNG</h3>
+        <h4>LOA</h4>
+      </div>
+        <div id="resources">
+          <div id="electricity">
+            <img src="image\dien1.png" alt="Electricity">
+            <p id="electricity-used">Loading...</p>
+
+          </div>
+          <div id="water">
+            <img src="image\nuoc1.png" alt="Water">
+            <p id="water-used">Loading...</p>
+
+          </div>
+          <div id="sewage">
+            <img src="image\cong1.png" alt="Sewage">
+            <p id="sewage-used">Loading...</p>
+
+          </div>
+
+        </div>
+    </div>
+    <div id= "footer">
+         <ul>
+              <li>    Mọi chi tiết xin liên hệ qua Hotline: +84589474566 </li>
+              <li>    Email: baoluu142003@gmail.com </li>
+
+        </ul>
+    </div>
+    <script src="function.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCCIBlxNpHqRudJpAqCVZhcT3uuwU0XvUA",
+    authDomain: "baodattien.firebaseapp.com",
+    projectId: "baodattien",
+    storageBucket: "baodattien.appspot.com",
+    messagingSenderId: "199793735752",
+    appId: "1:199793735752:web:56da93cddcb021979d007d",
+    measurementId: "G-NF2H5F5ZN5"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+  //functions
+  var nhietDo = document.getElementById('nhietdo');
+  var dbRef = firebase.database().ref('quan1').child('Nhietdo');  
+  var doAm = document.getElementById('doam');
+  var dbRef2 = firebase.database().ref('quan1').child('Doam');
+  var luongMua = document.getElementById('luongmua');
+  var dbRef3 = firebase.database().ref('quan1').child('Luongmua');
+  var mucgio = document.getElementById('mucgio');
+  var dbRef4 = firebase.database().ref('quan1').child('Mucgio');
+  var buimin = document.getElementById('buimin');
+  var dbRef5 = firebase.database().ref('quan1').child('Buimin');
+
+  var nhietDo_q2 = document.getElementById('nhietdo');
+  var dbRef6 = firebase.database().ref('quan2').child('Nhietdo');  
+  var doAm_q2 = document.getElementById('doam');
+  var dbRef7 = firebase.database().ref('quan2').child('Doam');
+  var luongMua_q2 = document.getElementById('luongmua');
+  var dbRef8 = firebase.database().ref('quan2').child('Luongmua');
+  var mucgio_q2 = document.getElementById('mucgio');
+  var dbRef9 = firebase.database().ref('quan2').child('Mucgio');
+  var buimin_q2 = document.getElementById('buimin');
+  var dbRef10 = firebase.database().ref('quan2').child('Buimin');
+
+  var nhietDo_q3 = document.getElementById('nhietdo');
+  var dbRef11 = firebase.database().ref('quan3').child('Nhietdo');
+  var doAm_q3 = document.getElementById('doam');
+  var dbRef12 = firebase.database().ref('quan3').child('Doam');  
+  var luongMua_q3 = document.getElementById('luongmua');
+  var dbRef13 = firebase.database().ref('quan3').child('Luongmua');
+  var mucgio_q3 = document.getElementById('mucgio');
+  var dbRef14 = firebase.database().ref('quan3').child('Mucgio');
+  var buimin_q3 = document.getElementById('buimin');
+  var dbRef15 = firebase.database().ref('quan3').child('Buimin');
+
+  var nhietDo_q4 = document.getElementById('nhietdo');
+  var dbRef16 = firebase.database().ref('quan4').child('Nhietdo');
+  var doAm_q4 = document.getElementById('doam');
+  var dbRef17 = firebase.database().ref('quan4').child('Doam');
+  var luongMua_q4 = document.getElementById('luongmua');
+  var dbRef18 = firebase.database().ref('quan4').child('Luongmua');
+  var mucgio_q4 = document.getElementById('mucgio');
+  var dbRef19 = firebase.database().ref('quan4').child('Mucgio');
+  var buimin_q4 = document.getElementById('buimin');
+  var dbRef20 = firebase.database().ref('quan4').child('Buimin');
+
+</script>
+<script>
+  function function_q1(){
+    dbRef.on('value', snap => nhietDo.innerText = snap.val());
+    dbRef2.on('value', snap => doAm.innerText = snap.val());
+    dbRef3.on('value', snap => luongMua.innerText = snap.val());
+    dbRef4.on('value', snap => mucgio.innerText = snap.val());
+    dbRef5.on('value', snap => buimin.innerText = snap.val());   
+  }
+</script>
+<script>
+  function function_q2(){
+    dbRef6.on('value', snap => nhietDo_q2.innerText = snap.val());
+    dbRef7.on('value', snap => doAm_q2.innerText = snap.val());
+    dbRef8.on('value', snap => luongMua_q2.innerText = snap.val());
+    dbRef9.on('value', snap => mucgio_q2.innerText = snap.val());
+    dbRef10.on('value', snap => buimin_q2.innerText = snap.val());
+  }
+</script>
+<script>
+  function function_q3(){
+    dbRef11.on('value', snap => nhietDo_q3.innerText = snap.val());
+    dbRef12.on('value', snap => doAm_q3.innerText = snap.val());
+    dbRef13.on('value', snap => luongMua_q3.innerText = snap.val());
+    dbRef14.on('value', snap => mucgio_q3.innerText = snap.val());
+    dbRef15.on('value', snap => buimin_q3.innerText = snap.val());
+  }
+</script>
+<script>
+  function function_q4(){
+    dbRef16.on('value', snap => nhietDo_q4.innerText = snap.val());
+    dbRef17.on('value', snap => doAm_q4.innerText = snap.val());
+    dbRef18.on('value', snap => luongMua_q4.innerText = snap.val());
+    dbRef19.on('value', snap => mucgio_q4.innerText = snap.val());
+    dbRef20.on('value', snap => buimin_q4.innerText = snap.val());
+  }
+</script>
+
+<script>
+  // Hàm tính phần trăm sử dụng
+  function calculatePercentage(used, total) {
+    return ((used / total) * 100).toFixed(2) + '%';
+  }
+
+  // Lấy dữ liệu điện và hiển thị với từ "Điện"
+  firebase.database().ref('Tainguyen/Dien').on('value', (snapshot) => {
+    const total = snapshot.val();
+    firebase.database().ref('Tainguyen/Diendung').on('value', (usedSnapshot) => {
+      const used = usedSnapshot.val();
+      const percentage = calculatePercentage(used, total);
+      document.getElementById('electricity-used').innerText = `Điện: ${used} kWh / ${total} kWh (${percentage})`;
+    });
+  });
+
+  // Lấy dữ liệu nước và hiển thị với từ "Nước"
+  firebase.database().ref('Tainguyen/Nuoc').on('value', (snapshot) => {
+    const total = snapshot.val();
+    firebase.database().ref('Tainguyen/Nuocdung').on('value', (usedSnapshot) => {
+      const used = usedSnapshot.val();
+      const percentage = calculatePercentage(used, total);
+      document.getElementById('water-used').innerText = `Nước: ${used} m³ / ${total} m³ (${percentage})`;
+    });
+  });
+
+  // Lấy dữ liệu cống và hiển thị với từ "Thoát nước"
+  firebase.database().ref('Tainguyen/Cong').on('value', (snapshot) => {
+    const total = snapshot.val();
+    firebase.database().ref('Tainguyen/Congdung').on('value', (usedSnapshot) => {
+      const used = usedSnapshot.val();
+      const percentage = calculatePercentage(used, total);
+      document.getElementById('sewage-used').innerText = `Thoát nước: ${used} m³ / ${total} m³ (${percentage})`;
+    });
+  });
+</script>
+
+</body>
+</html>
